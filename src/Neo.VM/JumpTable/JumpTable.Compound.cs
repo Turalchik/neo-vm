@@ -590,9 +590,8 @@ partial class JumpTable
             r2 = engine.ReferenceCounter.Count;
             engine.ReferenceCounter.AddStackReference(value);
         }
-        var key = engine.Pop<PrimitiveType>();
-        var r = engine.ReferenceCounter.Count;
         var r3 = engine.ReferenceCounter.Count;
+        var key = engine.Pop<PrimitiveType>();
         var x = engine.Pop();
         switch (x)
         {
