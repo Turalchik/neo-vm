@@ -133,7 +133,7 @@ public class ExecutionEngine : IDisposable
             Instruction? currentInstruction = context.CurrentInstruction;
             Instruction instruction = currentInstruction ?? Instruction.RET;
             ExecuteNext();
-            res.Add($"[{instruction.OpCode} {Convert.ToHexString(instruction.Operand.ToArray())} {ReferenceCounter.Count}] ");
+            res.Add($"[{instruction.OpCode} {Convert.ToHexString(instruction.Operand.ToArray())} {ReferenceCounter.Count} {TakeAdditionalOpcodeInformation()}] ");
         }
         return (State, res);
     }
@@ -345,6 +345,11 @@ public class ExecutionEngine : IDisposable
     protected virtual void PostExecuteInstruction(Instruction? instruction, RunStats? runStats)
     {
         ReferenceCounter.PostExecuteInstruction();
+    }
+
+    protected virtual string TakeAdditionalOpcodeInformation()
+    {
+        return string.Empty;
     }
 
     /// <summary>
