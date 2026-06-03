@@ -40,4 +40,7 @@ public struct RunStats
     /// NClonedItems is number of items cloned by opcode.
     /// </summary>
     public int NClonedItems { get; internal set; }
+
+    public readonly override string ToString()
+        => $"{{ Type = {Type}, Length = {Length}, RefsDelta = {RefsDelta}, NClonedItems = {NClonedItems} }}";
 }
